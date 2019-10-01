@@ -1,13 +1,21 @@
-name: Build CV document
+name: Build documents
 on: [push]
 
 jobs:
   build_cv:
+    name: Build CV
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v1
-      - name: Compile LaTeX document
+      - name: Compile CV
         uses: xu-cheng/latex-action@1.0.5
         with:
           root_file: cv.tex
+          extra_packages: "xifthen"
+      - name: Publish pelease
+        uses: softprops/action-gh-release@v1
+        with:
+          files: cv.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
