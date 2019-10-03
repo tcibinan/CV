@@ -1,0 +1,15 @@
+name: 'Build latex file'
+description: 'Greet someone and record the time'
+inputs:
+  root_file:
+    description: 'Latex file to build'
+    required: true
+    default: 'World'
+outputs:
+  pdf:
+    description: 'Built pdf file'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.root_file }}
