@@ -1,5 +1,7 @@
 name: Build documents
-on: [push]
+on: 
+  push:
+    tags: '*'
 
 jobs:
   build_cv:
