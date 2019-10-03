@@ -12,7 +12,7 @@ jobs:
         uses: xu-cheng/latex-action@1.0.5
         with:
           root_file: cv.tex
-          extra_packages: "xifthen"
+          extra_packages: scheme-full
       - name: Publish pelease
         uses: softprops/action-gh-release@v1
         with:
