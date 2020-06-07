@@ -18,7 +18,7 @@ jobs:
       - name: Resolve date
         id: date
         run:
-          DATE=$(date date +'%d.%m.%Y')
+          DATE=$(date +'%d.%m.%Y')
           echo "::set-output name=date::$DATE"
       - name: Tag latest commit
         uses: tvdias/github-tagger@v0.0.2
