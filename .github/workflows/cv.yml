@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v1
       - name: Compile CV
         id: compile
-        uses: tcibinan/build-latex-already@0.1.4
+        uses: tcibinan/build-latex-already@0.1.5
         with:
           tex: cv.tex
       - name: Tag latest commit
