@@ -11,7 +11,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v1
       - name: Compile CV
-        uses: tcibinan/build-latex-already@v0.1
+        uses: tcibinan/build-latex-already@0.1
         with:
           tex: 'cv.tex'
         id: compile
