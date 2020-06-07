@@ -11,9 +11,9 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v1
       - name: Compile CV
-        uses: tcibinan/build-latex-already@0.1.2
+        uses: tcibinan/build-latex-already@0.1.3
         with:
-          tex: 'cv.tex'
+          tex: cv.tex
         id: compile
       - name: Publish pelease
         uses: softprops/action-gh-release@v1
