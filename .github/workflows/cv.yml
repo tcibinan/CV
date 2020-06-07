@@ -21,9 +21,9 @@ jobs:
           DATE=$(date date +'%d.%m.%Y')
           echo "::set-output name=date::$DATE"
       - name: Tag latest commit
-        uses: EndBug/latest-tag@v1.3.1
+        uses: tvdias/github-tagger@v0.0.2
         with:
-          tag-name: ${{ steps.date.outputs.date }}
+          tag: ${{ steps.date.outputs.date }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish pelease
