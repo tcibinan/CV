@@ -11,13 +11,19 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v1
       - name: Compile CV
+        id: compile
         uses: tcibinan/build-latex-already@0.1.4
         with:
           tex: cv.tex
-        id: compile
+      - name: Resolve date
+        id: date
+        run:
+          DATE=$(date date +'%d.%m.%Y')
+          echo "::set-output name=date::$DATE"
       - name: Publish pelease
         uses: softprops/action-gh-release@v1
         with:
+          name: ${{ steps.date.outputs.date }}
           files: ${{ steps.compile.outputs.pdf }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
