@@ -18,7 +18,7 @@ jobs:
       - name: Tag latest commit
         uses: tvdias/github-tagger@v0.0.2
         with:
-          tag: ${{ steps.date.outputs.date }}
+          tag: ${{ github.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish pelease
         uses: softprops/action-gh-release@v1
