@@ -18,12 +18,12 @@ jobs:
       - name: Tag latest commit
         uses: tvdias/github-tagger@v0.0.2
         with:
-          tag: ${{ github.sha }}
+          tag: ${{ github.run_id }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish pelease
         uses: softprops/action-gh-release@v1
         with:
-          name: ${{ github.sha }}
+          name: ${{ github.run_id }}
           files: ${{ steps.compile.outputs.pdf }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
