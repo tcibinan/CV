@@ -1,8 +1,8 @@
 name: Build documents
 on: 
   push:
-    tags: '*'
-
+    branches:
+      master
 jobs:
   build_cv:
     name: Build CV
@@ -11,21 +11,13 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v1
       - name: Compile CV
-        uses: ./
+        uses: tcibinan/build-latex-already@v0.1
         with:
-          root_file: cv.tex
+          tex: 'cv.tex'
+        id: compile
       - name: Publish pelease
-        if: success()
         uses: softprops/action-gh-release@v1
         with:
-          files: outputs/cv.pdf
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v0.5.0
-        with:
-          target_branch: gh-pages
-          build_dir: outputs
+          files: ${{ steps.compile.outputs.pdf }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
