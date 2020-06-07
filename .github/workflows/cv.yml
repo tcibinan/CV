@@ -15,11 +15,6 @@ jobs:
         uses: tcibinan/build-latex-already@0.1.4
         with:
           tex: cv.tex
-      - name: Resolve date
-        id: date
-        run:
-          DATE=$(date +'%d.%m.%Y')
-          echo "::set-output name=date::$DATE"
       - name: Tag latest commit
         uses: tvdias/github-tagger@v0.0.2
         with:
@@ -28,7 +23,7 @@ jobs:
       - name: Publish pelease
         uses: softprops/action-gh-release@v1
         with:
-          name: ${{ steps.date.outputs.date }}
+          name: ${{ github.sha }}
           files: ${{ steps.compile.outputs.pdf }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
