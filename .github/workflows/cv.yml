@@ -34,7 +34,13 @@ jobs:
           tag_name: ${{ steps.resolve_date.outputs.date }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get latest release
+        id: get_latest_release
+        uses: pozetroninc/github-action-get-latest-release@v0.4.0
+        with:
+          repository: tcibinan/CV
       - name: Create release
+        if: ${{ steps.get_latest_release.outputs.release != steps.resolve_date.outputs.date }}
         id: create_release
         uses: actions/create-release@v1
         env:
