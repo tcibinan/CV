@@ -7,7 +7,7 @@ on:
 jobs:
   build_cv:
     name: Build CV
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
@@ -18,7 +18,8 @@ jobs:
           tex: cv.tex
       - name: Build png
         id: build_png
-        run: pdftoppm cv.pdf cv -png -singlefile &&
+        run: apt-get install poppler-utils &&
+             pdftoppm cv.pdf cv -png -singlefile &&
              echo "::set-output name=pnf::cv.png"
       - name: Retrieve date
         id: resolve_date
