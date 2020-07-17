@@ -3,6 +3,7 @@ on:
   push:
     branches:
       master
+
 jobs:
   build_cv:
     name: Build CV
@@ -10,33 +11,58 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-      - name: Compile CV
-        id: compile
+      - name: Build pdf
+        id: build_pdf
         uses: tcibinan/build-latex-already@0.1.5
         with:
           tex: cv.tex
+      - name: Build png
+        id: build_png
+        run: pdftoppm cv.pdf cv -png -singlefile &&
+             echo "::set-output name=pnf::cv.png"
+      - name: Retrieve date
+        id: resolve_date
+        run: echo ::set-output name=date::$(date +'%d.%m.%Y')
       - name: Tag latest commit
         uses: tvdias/github-tagger@v0.0.2
         with:
-          tag: ${{ github.run_id }}
+          tag: ${{ steps.resolve_date.outputs.date }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Retrieve current date
-        id: current-date-resolver
-        run: echo ::set-env name=CURRENT_DATE::$(date +'%d.%m.%Y')
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.CURRENT_DATE }}
-          release_name: ${{ env.CURRENT_DATE }}
-      - name: Upload release asset
+          tag_name: ${{ steps.resolve_date.outputs.date }}
+          release_name: ${{ steps.resolve_date.outputs.date }}
+      - name: Upload pdf
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.compile.outputs.pdf }}
+          asset_path: ${{ steps.build_pdf.outputs.pdf }}
           asset_name: cv.pdf
           asset_content_type: application/pdf
+      - name: Upload png
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.build_png.outputs.png }}
+          asset_name: cv.png
+          asset_content_type: image/png
+      - name: Collect assets
+        id: collect_assets
+        run: mkdir assets &&
+             cp ${{ steps.build_pdf.outputs.pdf }} ${{ steps.build_png.outputs.png }} assets &&
+             echo "::set-output name=assets::assets"
+      - name: Deploy to pages
+        uses: crazy-max/ghaction-github-pages@v0.5.0
+        with:
+          target_branch: gh-pages
+          build_dir: ${{ steps.assets.outputs.assets }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
