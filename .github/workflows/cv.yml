@@ -24,7 +24,7 @@ jobs:
         id: build_png
         run: sudo apt-get install poppler-utils &&
              pdftoppm cv.pdf cv -png -singlefile &&
-             echo "::set-output name=pnf::cv.png"
+             echo "::set-output name=png::cv.png"
       - name: Retrieve date
         id: resolve_date
         run: echo ::set-output name=date::$(date +'%d.%m.%Y')
@@ -56,7 +56,7 @@ jobs:
       - name: Upload assets
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: '${{ steps.assets.outputs.assets }}/*'
+          files: '${{ steps.collect_assets.outputs.assets }}/*'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           release-tag: ${{ steps.resolve_date.outputs.date }}
       - name: Deploy to pages
