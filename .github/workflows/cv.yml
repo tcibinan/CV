@@ -29,10 +29,11 @@ jobs:
         id: resolve_date
         run: echo ::set-output name=date::$(date +'%d.%m.%Y')
       - name: Tag latest commit
-        uses: tvdias/github-tagger@v0.0.2
+        uses: EndBug/latest-tag@v1.3.1
         with:
-          tag: ${{ steps.resolve_date.outputs.date }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          tag-name: ${{ steps.resolve_date.outputs.date }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
