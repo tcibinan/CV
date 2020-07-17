@@ -54,11 +54,14 @@ jobs:
           cp ${{ steps.build_pdf.outputs.pdf }} ${{ steps.build_png.outputs.png }} assets &&
           echo "::set-output name=assets::assets"
       - name: Upload assets
-        uses: AButler/upload-release-assets@v2.0
+        uses: meeDamian/github-release@v2.0.3
         with:
-          files: '${{ steps.collect_assets.outputs.assets }}/*'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: ${{ steps.resolve_date.outputs.date }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.resolve_date.outputs.date }}
+          name: ${{ steps.resolve_date.outputs.date }}
+          files: >
+            ${{ steps.build_pdf.outputs.pdf }}
+            ${{ steps.build_png.outputs.png }}
       - name: Deploy to pages
         uses: crazy-max/ghaction-github-pages@v0.5.0
         with:
