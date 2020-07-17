@@ -22,7 +22,7 @@ jobs:
              echo "::set-output name=pdf::cv.pdf"
       - name: Build png
         id: build_png
-        run: apt-get install poppler-utils &&
+        run: sudo apt-get install poppler-utils &&
              pdftoppm cv.pdf cv -png -singlefile &&
              echo "::set-output name=pnf::cv.png"
       - name: Retrieve date
