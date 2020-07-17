@@ -49,6 +49,7 @@ jobs:
             ${{ steps.build_pdf.outputs.pdf }}
             ${{ steps.build_png.outputs.png }}
           allow_override: true
+          gzip: false
       - name: Collect assets
         id: collect_assets
         run: mkdir assets &&
