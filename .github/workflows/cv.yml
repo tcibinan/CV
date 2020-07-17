@@ -20,14 +20,17 @@ jobs:
         with:
           tag: ${{ github.run_id }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Retrieve current date
+        id: current-date-resolver
+        run: echo ::set-env name=CURRENT_DATE::$(date +'%d.%m.%Y')
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_id }}
-          release_name: ${{ github.run_id }}
+          tag_name: ${{ env.CURRENT_DATE }}
+          release_name: ${{ env.CURRENT_DATE }}
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         env:
