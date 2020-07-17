@@ -39,21 +39,7 @@ jobs:
         uses: pozetroninc/github-action-get-latest-release@v0.4.0
         with:
           repository: tcibinan/CV
-      - name: Create release
-        if: ${{ steps.get_latest_release.outputs.release != steps.resolve_date.outputs.date }}
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.resolve_date.outputs.date }}
-          release_name: ${{ steps.resolve_date.outputs.date }}
-      - name: Collect assets
-        id: collect_assets
-        run: mkdir assets &&
-          cp ${{ steps.build_pdf.outputs.pdf }} ${{ steps.build_png.outputs.png }} assets &&
-          echo "::set-output name=assets::assets"
-      - name: Upload assets
+      - name: Create or update release
         uses: meeDamian/github-release@v2.0.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,6 +48,12 @@ jobs:
           files: >
             ${{ steps.build_pdf.outputs.pdf }}
             ${{ steps.build_png.outputs.png }}
+          allow_override: true
+      - name: Collect assets
+        id: collect_assets
+        run: mkdir assets &&
+          cp ${{ steps.build_pdf.outputs.pdf }} ${{ steps.build_png.outputs.png }} assets &&
+          echo "::set-output name=assets::assets"
       - name: Deploy to pages
         uses: crazy-max/ghaction-github-pages@v0.5.0
         with:
