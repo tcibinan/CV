@@ -48,29 +48,17 @@ jobs:
         with:
           tag_name: ${{ steps.resolve_date.outputs.date }}
           release_name: ${{ steps.resolve_date.outputs.date }}
-      - name: Upload pdf
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.build_pdf.outputs.pdf }}
-          asset_name: cv.pdf
-          asset_content_type: application/pdf
-      - name: Upload png
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.build_png.outputs.png }}
-          asset_name: cv.png
-          asset_content_type: image/png
       - name: Collect assets
         id: collect_assets
         run: mkdir assets &&
-             cp ${{ steps.build_pdf.outputs.pdf }} ${{ steps.build_png.outputs.png }} assets &&
-             echo "::set-output name=assets::assets"
+          cp ${{ steps.build_pdf.outputs.pdf }} ${{ steps.build_png.outputs.png }} assets &&
+          echo "::set-output name=assets::assets"
+      - name: Upload assets
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: '${{ steps.assets.outputs.assets }}/*'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          release-tag: ${{ steps.resolve_date.outputs.date }}
       - name: Deploy to pages
         uses: crazy-max/ghaction-github-pages@v0.5.0
         with:
