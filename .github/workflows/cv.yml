@@ -19,7 +19,7 @@ jobs:
       - name: Build png
         id: build_png
         run: sudo apt-get install poppler-utils &&
-             pdftoppm cv.pdf cv -png -singlefile &&
+             pdftoppm ${{ steps.build_pdf.outputs.pdf }} cv -png -singlefile &&
              echo "::set-output name=png::cv.png"
       - name: Retrieve date
         id: resolve_date
