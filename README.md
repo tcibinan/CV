@@ -5,7 +5,7 @@
 
 ## Credits
 
-Autobuild CV by Andrey Tsibin 
+Automated CV by [Andrey Tsibin](https://github.com/tcibinan) 
 based on [CV](https://github.com/janvorisek/minimal-latex-cv) 
 by [Jan Vorisek](https://github.com/janvorisek) 
 which is based on [CV](https://github.com/jankapunkt/latexcv) 
