@@ -44,7 +44,7 @@
 \usepackage{moresize}		
 
 % font icons package
-\usepackage{fontawesome}
+\usepackage{fontawesome5}
 
 %----------------------------------------------------------------------------------------
 %	PAGE LAYOUT  DEFINITIONS
@@ -193,7 +193,7 @@
 	\filldraw[fill=black,draw=none] (#1,0.5) circle (#3);
 	
 	% outer label
-	\node[label=\textcolor{black}{#4}] at (#1,0.7) {};
+	\node[anchor=base] at (#1,0.8) {\textcolor{black}{#4}};
 }
 
 \newcommand{\bubbles}[2]{
@@ -203,7 +203,7 @@
 	\begin{tikzpicture}[scale=3]
 	\foreach \p/\t in {#1} {
 		\addtocounter{a}{1}
-		\bubble{\thea/2}{\theb}{\p/25}{\t}{1\p0}
+		\bubble{\thea/1.5}{\theb}{\p/25}{\t}{1\p0}
 	}
 	\end{tikzpicture}
 }
@@ -267,21 +267,19 @@
 	%	TITLE HEADLINE
 	%----------------------------------------------------------------------------------------
 	\begin{minipage}[t]{0.45\textwidth}\hrule height 0pt width 0pt%
-		\colorbox{black}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{\cvfirstname \cvlastname}}}}}%
+		\colorbox{black}{{\Huge\textcolor{white}{\textbf{\MakeUppercase{\cvfirstname\ \cvlastname}}}}}%
 		
 		\vspace{1mm}\LARGE{\cvposition}
 	\end{minipage}%
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
 		\small%
 		\icontext{MapMarker}{12}{\cvlocation}\\
-		\icontext{Phone}{12}{\cvphone}\\
 		\icontext{At}{12}{\href{mailto:\cvmail}{\cvmail}}\\
 	\end{minipage}%
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
 		\small%
-		\icontext{Globe}{12}{\href{\cvweb}{\cvweb}}\\
-		\icontext{Github}{12}{\href{\cvgithub}{\cvgithub}}\\
-		\icontext{Twitter}{12}{\href{\cvtwitter}{\cvtwitter}}\\
+		\icontext{Github}{12}{\href{\cvgithuburl}{\cvgithub}}\\
+		\icontext{Telegram}{12}{\href{\cvtelegramurl}{\cvtelegram}}\\
 	\end{minipage}%
 	
 	% manage space by reducing font size
