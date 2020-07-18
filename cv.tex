@@ -256,6 +256,8 @@
 	\hspace{2mm}/\hspace{2mm}
 }
 
+\input{data.tex}
+
 %----------------------------------------------------------------------------------------
 %	DOCUMENT CONTENT
 %----------------------------------------------------------------------------------------
@@ -265,21 +267,21 @@
 	%	TITLE HEADLINE
 	%----------------------------------------------------------------------------------------
 	\begin{minipage}[t]{0.45\textwidth}\hrule height 0pt width 0pt%
-		\colorbox{black}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{John Doe}}}}}%
+		\colorbox{black}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{\cvfirstname \cvlastname}}}}}%
 		
-		\vspace{1mm}\LARGE{Web App Architect}
+		\vspace{1mm}\LARGE{\cvposition}
 	\end{minipage}%
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
 		\small%
-		\icontext{MapMarker}{12}{Prague, Czech Republic}\\
-		\icontext{Phone}{12}{+420 123 456 789}\\
-		\icontext{At}{12}{\href{mailto:jan@vorisek.me}{jan@vorisek.me}}\\	
+		\icontext{MapMarker}{12}{\cvlocation}\\
+		\icontext{Phone}{12}{\cvphone}\\
+		\icontext{At}{12}{\href{mailto:\cvmail}{\cvmail}}\\
 	\end{minipage}%
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
 		\small%
-		\icontext{Globe}{12}{\href{https://jan.vorisek.me}{jan.vorisek.me}}\\
-		\icontext{Github}{12}{\href{https://github.com/janvorisek}{github.com/janvorisek}}\\
-		\icontext{Twitter}{12}{\href{https://twitter.com/@JanVorisekCZ}{twitter.com/@JanVorisekCZ}}\\
+		\icontext{Globe}{12}{\href{\cvweb}{\cvweb}}\\
+		\icontext{Github}{12}{\href{\cvgithub}{\cvgithub}}\\
+		\icontext{Twitter}{12}{\href{\cvtwitter}{\cvtwitter}}\\
 	\end{minipage}%
 	
 	% manage space by reducing font size
@@ -292,81 +294,37 @@
 	
 	\cvsect{Who Am I?}%
 	\begin{minipage}[t]{0.4\textwidth}%
-		\lorem \lorem \lorem \lorem \lorem\\
+		\cvhowami
 	\end{minipage}%
 	\hfill
 	\begin{minipage}[t]{0.5\textwidth}\hrule height 0pt width 0pt%
 		\vspace{-10pt}%
-		\begin{barchart}{10}{5.5}{red}{white}{black}{black}{black}{black}
-			\baritem{50}{JavaScript}{0}{0}{60}
-			\baritem{80}{PHP}{100}{0}{0}
-			\baritem{80}{SASS/LESS}{0}{0}{70}
-			\baritem{80}{Bootstrap 3/4}{0}{0}{70}
-			\baritem{40}{Git}{0}{0}{40}
-			\baritem{50}{LaTeX}{0}{0}{60}
-		\end{barchart}
+		\cvprogramminglanguages
 	\end{minipage}%
 	
 	\begin{center}
-			\bubbles{5/Eclipse, 6/git, 4/Office, 3/Inkscape, 3/Blender}{}
+		\cvareas
 	\end{center}
 	
 	\cvsect{Experience}
-	\begin{entrylist}
-		\entry
-		{2017 – 3/2018}
-		{Front-end developer}
-		{Big Corporation Name Inc.}
-		{\lorem \lorem \lorem\\
-			\texttt{node.js}\slashsep\texttt{Vue.js}\slashsep\texttt{Electron}}
-		\entry
-		{2015 – 2018\\\footnotesize{part time}}
-		{Full stack developer}
-		{Famous Eshop Inc.}
-		{\lorem\lorem\\
-			\texttt{PHP}\slashsep\texttt{JS}\slashsep\texttt{MariaDB}\slashsep\texttt{Linux}}
-		\entry
-		{2013 – 2014\\\footnotesize{part time}}
-		{Junior PHP Developer}
-		{example.com}
-		{\lorem\lorem\\
-			\texttt{PHP}\slashsep\texttt{Laravel}}
-	\end{entrylist}
+		\cvexperience
 	\\\\
 	\cvsect{Education}
-	\begin{entrylist}
-		\entry
-		{2013 – 2017}
-		{Master's Degree}
-		{Another Awesome University}
-		{\lorem\lorem\lorem}
-		\entry
-		{2014}
-		{ERASMUS}
-		{Awesome University in Heaven}
-		{\lorem\lorem}
-		\entry
-		{2007 – 2013}
-		{Bachelor's Degree}
-		{Awesome University in Heaven}
-		{\lorem\lorem}
-	\end{entrylist}
+		\cveducation
 	\\\\
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-		\cvsect{Languages}
-		\textbf{Czech} - native\\
-		\textbf{English} - C2\\
-		\textbf{Polish} - B1
+    	\cvsect{Languages}
+		\cvlanguages
 	\end{minipage}%
 	\hspace{0cm}
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
 		\cvsect{Hobbies}
-		I love... \lorem
+		\cvhobbies
 	\end{minipage}%
 	\hspace{2cm}
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
 		\cvsect{Non profit}
-		I help... \lorem
+		\cvnonprofit
 	\end{minipage}%
 	% LANGUAGES
 	
