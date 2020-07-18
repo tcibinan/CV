@@ -11,7 +11,7 @@
 %----------------------------------------------------------------------------------------
 
 %we use utf8 since we want to build from any machine
-\usepackage[utf8]{inputenc}	
+\usepackage[utf8]{inputenc}
 
 %----------------------------------------------------------------------------------------
 %	LOGIC
@@ -256,6 +256,7 @@
 	\hspace{2mm}/\hspace{2mm}
 }
 
+\input{locale.tex}
 \input{data.tex}
 
 %----------------------------------------------------------------------------------------
@@ -290,7 +291,7 @@
 	%	SKILLS AND TECHNOLOGIES
 	%----------------------------------------------------------------------------------------
 	
-	\cvsect{Who Am I?}%
+	\cvsect{\cvtemplatewhoami}%
 	\begin{minipage}[t]{0.4\textwidth}%
 		\cvhowami
 	\end{minipage}%
@@ -304,24 +305,24 @@
 		\cvareas
 	\end{center}
 	
-	\cvsect{Experience}
+	\cvsect{\cvtemplateexperience}
 		\cvexperience
 	\\\\
-	\cvsect{Education}
+	\cvsect{\cvtemplateeducation}
 		\cveducation
 	\\\\
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-    	\cvsect{Languages}
+    	\cvsect{\cvtemplatelanguages}
 		\cvlanguages
 	\end{minipage}%
 	\hspace{0cm}
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-		\cvsect{Hobbies}
+		\cvsect{\cvtemplatehobbies}
 		\cvhobbies
 	\end{minipage}%
 	\hspace{2cm}
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-		\cvsect{Non profit}
+		\cvsect{\cvtemplatenonprofit}
 		\cvnonprofit
 	\end{minipage}%
 	% LANGUAGES
