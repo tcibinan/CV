@@ -11,15 +11,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-#      - name: Build pdf
-#        id: build_pdf
-#        uses: tcibinan/build-latex-already@0.1.5
-#        with:
-#          tex: cv.tex
-      - name: Build pdf (debug mock)
+      - name: Build pdf
         id: build_pdf
-        run: wget "https://github.com/tcibinan/CV/raw/gh-pages/cv.pdf" &&
-             echo "::set-output name=pdf::cv.pdf"
+        uses: tcibinan/build-latex-already@0.1.5
+        with:
+          tex: cv.tex
       - name: Build png
         id: build_png
         run: sudo apt-get install poppler-utils &&
