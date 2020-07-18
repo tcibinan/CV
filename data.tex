@@ -1,8 +1,15 @@
-\newcommand{\cvfirstname}{Andrey}
-\newcommand{\cvlastname}{Tsibin}
+\newcommand{\cvtemplateexperience}{\cvlocalized{Experience}{Опыт работы}}
+\newcommand{\cvtemplateeducation}{\cvlocalized{Education}{Образование}}
+\newcommand{\cvtemplatelanguages}{\cvlocalized{Languages}{Языки}}
+\newcommand{\cvtemplatehobbies}{\cvlocalized{Hobbies}{Увлечения}}
+\newcommand{\cvtemplatenonprofit}{\cvlocalized{Non profit}{Благотворительность}}
+\newcommand{\cvtemplatewhoami}{\cvlocalized{Who Am I?}{О себе}}
+
+\newcommand{\cvfirstname}{\cvlocalized{Andrey}{Андрей}}
+\newcommand{\cvlastname}{\cvlocalized{Tsibin}{Цибин}}
 \newcommand{\cvposition}{Software Engineer}
 
-\newcommand{\cvlocation}{Saint Petersburg, Russia}
+\newcommand{\cvlocation}{\cvlocalized{Saint Petersburg, Russia}{Санкт-Петербург, Россия}}
 \newcommand{\cvmail}{tsibin.andr@gmail.com}
 \newcommand{\cvgithub}{github.com/tcibinan}
 \newcommand{\cvgithuburl}{https://github.com/tcibinan}
@@ -23,20 +30,26 @@
 }
 
 \newcommand{\cvareas}{
-	\bubbles{4/Bioinformatics, 5/Education, 6/Automation, 5/Cloud, 3/Open Source}{}
+	\bubbles{
+    	4/\cvlocalized{Bioinformatics}{Биоинформатика},
+    	5/\cvlocalized{Education}{Образование},
+    	6/\cvlocalized{Automation}{Автоматизация},
+    	5/Cloud,
+    	3/Open Source
+	}{}
 }
 
 \newcommand{\cvexperience}{
 	\begin{entrylist}
         \entry
-		{2018 – present }
+		{2018 – \cvlocalized{present}{настоящее}}
 		{Software Engineer}
 		{EPAM Systems}
 		{\lorem \lorem \lorem\\
 			\texttt{Java}\slashsep\texttt{Spring}\slashsep\texttt{Python}\slashsep\texttt{Docker}\slashsep\texttt{Linux}\\
 			\texttt{AWS}\slashsep\texttt{Google Cloud}\slashsep\texttt{Azure}}
 		\entry
-		{2017 – 2018\\\footnotesize{part time}}
+		{2017 – 2018\\\footnotesize{\cvlocalized{part time}{неполный день}}}
 		{Junior Software Engineer}
 		{EPAM Systems}
 		{\lorem\lorem\\
@@ -48,20 +61,20 @@
 	\begin{entrylist}
 		\entry
 		{2018 – 2020}
-		{Master's Degree}
-		{ITMO University}
+		{\cvlocalized{Master’s Degree}{Магистратура}}
+		{\cvlocalized{ITMO University}{Университет ИТМО}}
 		{\lorem\lorem\lorem}
 		\entry
 		{2014 – 2018}
-		{Bachelor's Degree}
-		{ITMO University}
+		{\cvlocalized{Bachelor’s Degree}{Бакалавриат}}
+		{\cvlocalized{ITMO University}{Университет ИТМО}}
 		{\lorem\lorem}
 	\end{entrylist}
 }
 
 \newcommand{\cvlanguages}{
-	\textbf{Russian} - native\\
-	\textbf{English} - B2
+	\textbf{\cvlocalized{Russian}{Русский}} - \cvlocalized{native}{родной}\\
+	\textbf{\cvlocalized{English}{Английский}} - B2
 }
 
 \newcommand{\cvhobbies}{
