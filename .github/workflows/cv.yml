@@ -18,7 +18,8 @@ jobs:
           tex: cv.tex
           name: cv
       - name: Prepare localization russian
-        run: ln -s locale_rus.tex locale.tex
+        run: rm locale.tex &&
+             ln -s locale_rus.tex locale.tex
       - name: Build pdf russian
         id: build_pdf_russian
         uses: tcibinan/build-latex-already@0.1.7
