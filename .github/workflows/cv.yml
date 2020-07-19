@@ -66,10 +66,10 @@ jobs:
       - name: Collect assets
         id: collect_assets
         run: mkdir assets &&
-             cp ${{ steps.build_pdf.outputs.pdf }} \
-                ${{ steps.build_png.outputs.png }} \
-                ${{ steps.build_pdf_russian.outputs.pdf }} \
-                ${{ steps.build_png_russian.outputs.png }} \
+             cp ${{ steps.build_pdf.outputs.pdf }}
+                ${{ steps.build_png.outputs.png }}
+                ${{ steps.build_pdf_russian.outputs.pdf }}
+                ${{ steps.build_png_russian.outputs.png }}
                 assets &&
              echo "::set-output name=assets::assets"
       - name: Deploy to pages
