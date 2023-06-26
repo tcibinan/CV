@@ -17,25 +17,11 @@ jobs:
         with:
           tex: cv.tex
           name: cv
-      - name: Prepare localization russian
-        run: rm locale.tex &&
-             ln -s locale_rus.tex locale.tex
-      - name: Build pdf russian
-        id: build_pdf_russian
-        uses: tcibinan/build-latex-already@0.1.8
-        with:
-          tex: cv.tex
-          name: cv_rus
       - name: Build png
         id: build_png
         run: sudo apt-get install poppler-utils &&
              pdftoppm ${{ steps.build_pdf.outputs.pdf }} cv -png -singlefile &&
              echo "::set-output name=png::cv.png"
-      - name: Build png russian
-        id: build_png_russian
-        run: sudo apt-get install poppler-utils &&
-             pdftoppm ${{ steps.build_pdf_russian.outputs.pdf }} cv_rus -png -singlefile &&
-             echo "::set-output name=png::cv_rus.png"
       - name: Retrieve date
         id: resolve_date
         run: echo ::set-output name=date::$(date +'%d.%m.%Y')
@@ -59,8 +45,6 @@ jobs:
           files: >
             ${{ steps.build_pdf.outputs.pdf }}
             ${{ steps.build_png.outputs.png }}
-            ${{ steps.build_pdf_russian.outputs.pdf }}
-            ${{ steps.build_png_russian.outputs.png }}
           allow_override: true
           gzip: false
       - name: Collect assets
@@ -68,8 +52,6 @@ jobs:
         run: mkdir assets &&
              cp ${{ steps.build_pdf.outputs.pdf }}
                 ${{ steps.build_png.outputs.png }}
-                ${{ steps.build_pdf_russian.outputs.pdf }}
-                ${{ steps.build_png_russian.outputs.png }}
                 assets &&
              echo "::set-output name=assets::assets"
       - name: Deploy to pages
