@@ -256,7 +256,6 @@
 	\hspace{2mm}/\hspace{2mm}
 }
 
-\input{locale.tex}
 \input{data.tex}
 
 %----------------------------------------------------------------------------------------
@@ -292,39 +291,24 @@
 	%----------------------------------------------------------------------------------------
 	
 	\cvsect{\cvtemplatewhoami}%
-	\begin{minipage}[t]{0.4\textwidth}%
+	\begin{minipage}[t]{0.6\textwidth}%
 		\cvhowami
 	\end{minipage}%
 	\hfill
-	\begin{minipage}[t]{0.5\textwidth}\hrule height 0pt width 0pt%
-		\vspace{-10pt}%
-		\cvprogramminglanguages
+	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
+		\cvsect{\cvtemplatelanguages}
+		\cvlanguages
 	\end{minipage}%
-	
-	\begin{center}
-		\cvareas
-	\end{center}
-	
+	\\\\
+
 	\cvsect{\cvtemplateexperience}
 		\cvexperience
 	\\\\
 	\cvsect{\cvtemplateeducation}
 		\cveducation
 	\\\\
-	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-    	\cvsect{\cvtemplatelanguages}
-		\cvlanguages
-	\end{minipage}%
-	\hspace{0cm}
-	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-		\cvsect{\cvtemplatehobbies}
-		\cvhobbies
-	\end{minipage}%
-	\hspace{2cm}
-	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-		\cvsect{\cvtemplatenonprofit}
-		\cvnonprofit
-	\end{minipage}%
-	% LANGUAGES
+	\cvsect{\cvtemplateachievement}
+		\cvachievement
+	\\\\
 	
 \end{document}
