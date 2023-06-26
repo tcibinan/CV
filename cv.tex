@@ -253,34 +253,40 @@
 	}\\\\}
 
 \newcommand{\slashsep}{
-	\hspace{2mm}/\hspace{2mm}
+	\hspace{1mm}/\hspace{1mm}
 }
 
 \input{data.tex}
+\graphicspath{ {./images/} }
 
 %----------------------------------------------------------------------------------------
 %	DOCUMENT CONTENT
 %----------------------------------------------------------------------------------------
 \begin{document}
-	
+
 	%----------------------------------------------------------------------------------------
 	%	TITLE HEADLINE
 	%----------------------------------------------------------------------------------------
-	\begin{minipage}[t]{0.45\textwidth}\hrule height 0pt width 0pt%
+	\begin{minipage}[t]{0.65\textwidth}\hrule height 0pt width 0pt%
 		\colorbox{black}{{\Huge\textcolor{white}{\textbf{\MakeUppercase{\cvfirstname\ \cvlastname}}}}}%
 		
 		\vspace{1mm}\LARGE{\cvposition}
-	\end{minipage}%
-	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
+
 		\small%
-		\icontext{MapMarker}{12}{\cvlocation}\\
-		\icontext{At}{12}{\href{mailto:\cvmail}{\cvmail}}\\
+		% \cvsect{\cvtemplatewhoami}%
+		\cvhowami%
 	\end{minipage}%
+	\hfill%
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
-		\small%
-		\icontext{Github}{12}{\href{\cvgithuburl}{\cvgithub}}\\
-		\icontext{Telegram}{12}{\href{\cvtelegramurl}{\cvtelegram}}\\
+		% \lorem\lorem\lorem\lorem\lorem\lorem
+		\hspace{1cm}
+		\begin{tikzpicture}
+			\clip (0,0)  circle (2cm);
+			\node[anchor=center] at (0,0) {\includegraphics[width=4cm]{photo.png}};
+			%adjust this coordinate to move image
+		\end{tikzpicture}
 	\end{minipage}%
+	\\\\
 	
 	% manage space by reducing font size
 	\small%
@@ -289,26 +295,27 @@
 	%----------------------------------------------------------------------------------------
 	%	SKILLS AND TECHNOLOGIES
 	%----------------------------------------------------------------------------------------
-	
-	\cvsect{\cvtemplatewhoami}%
-	\begin{minipage}[t]{0.6\textwidth}%
-		\cvhowami
+
+	\cvsect{\cvtemplateexperience}
+	\cvexperience
+	\\
+
+	\cvsect{\cvtemplateeducation}
+	\cveducation
+	\\
+
+	\cvsect{\cvtemplateachievement}
+	\cvachievement
+	\\
+
+	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
+		\cvsect{\cvtemplatecontacts}
+		\cvcontacts
 	\end{minipage}%
-	\hfill
 	\begin{minipage}[t]{0.3\textwidth}\hrule height 0pt width 0pt%
 		\cvsect{\cvtemplatelanguages}
 		\cvlanguages
 	\end{minipage}%
-	\\\\
+	\hfill%
 
-	\cvsect{\cvtemplateexperience}
-		\cvexperience
-	\\\\
-	\cvsect{\cvtemplateeducation}
-		\cveducation
-	\\\\
-	\cvsect{\cvtemplateachievement}
-		\cvachievement
-	\\\\
-	
 \end{document}
